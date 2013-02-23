@@ -22,3 +22,31 @@ follow.
 이번 장을 읽으면 HLA 프로그램의 기본 문법을 이해하게되고,
 나머지 장들에 사용되는 어셈블리 언어의 특징들을 이해하는데 필요한 기본 지식들을 얻게됩니다.
 
+A typical HLA program takes the form shown in Figure 1-1.
+pgmID in the template above is a user-defined program identifier. You 
+must pick an appropriate descriptive name for your program. In particular, 
+pgmID would be a horrible choice for any real program. If you are writing 
+programs as part of a course assignment, your instructor will probably give 
+you the name to use for your main program. If you are writing your own HLA 
+program, you will have to choose an appropriate name for your project.
+Identifiers in HLA are very similar to identifiers in most high-level 
+languages. HLA identifiers may begin with an underscore or an alphabetic 
+character and may be followed by zero or more alphanumeric or underscore 
+characters. HLA’s identifiers are case neutral. This means that the identifiers 
+are case sensitive insofar as you must always spell an identifier exactly the same 
+way in your program (even with respect to upper- and lowercase). However, 
+unlike in case-sensitive languages such as C/C++, you may not declare two 
+identifiers in the program whose name differs only by alphabetic case.
+A traditional first program people write, popularized by Kernighan and 
+Ritchie’s The C Programming Language, is the “Hello, world!” program. This 
+program makes an excellent concrete example for someone who is learning 
+a new language. Listing 1-1 presents the HLA helloWorld program.
+
+일반적인 HLA 프로그램은 그림 1-1과 같은 형태를 가집니다.
+그림1-1
+위의 형태에서 pgmID는 사용자가 정의한 식별자입니다. 당신의 프로그램을 잘 설명할 수 있는 이름을 식별자로 정해야합니다.
+이름을 잘못지으면 프로그램을 끔찍하게 만들 수 있습니다. 수업 과제로 프로그램을 만들 때는
+메인 프로그램의 이름을 교수님이 정해줄 것입니다. 혼자서 HLA 프로그램을 만들 때는 스스로 프로젝트의
+성격에 맞는 이름을 지어야합니다. 이런 식별자들은 다른 대부분의 고급 언어들과 마찬가지로 시작글자는 밑줄이나 알파벳으로
+해야하고 나머지 글자는 숫자나 알파벳, 밑줄을 사용할 수 있습니다. HLA의 식벼자는 대소문자를 구분하지 않습니다.
+식별자
