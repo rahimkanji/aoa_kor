@@ -48,5 +48,54 @@ a new language. Listing 1-1 presents the HLA helloWorld program.
 이름을 잘못지으면 프로그램을 끔찍하게 만들 수 있습니다. 수업 과제로 프로그램을 만들 때는
 메인 프로그램의 이름을 교수님이 정해줄 것입니다. 혼자서 HLA 프로그램을 만들 때는 스스로 프로젝트의
 성격에 맞는 이름을 지어야합니다. 이런 식별자들은 다른 대부분의 고급 언어들과 마찬가지로 시작글자는 밑줄이나 알파벳으로
-해야하고 나머지 글자는 숫자나 알파벳, 밑줄을 사용할 수 있습니다. HLA의 식벼자는 대소문자를 구분하지 않습니다.
-식별자
+해야하고 나머지 글자는 숫자나 알파벳, 밑줄을 사용할 수 있습니다. HLA의 식별자는 대소문자를 구분하지 않습니다.
+프로그램 안에 정의된 식별자는 각 글자가 대문자,소문자 구분없이 동일한 이름을 가져야합니다. C/C++같은 대소문자를 구별하는
+언어들과 다르게 대소문자만 다르고 같은 이름인 식별자 이름을 사용할 수 없습니다.
+Kernighan과 Ritchie의 The C Programming Language 책에서 유명해지고 많음 사람들이 
+자신의 첫 프로그램으로 만들어온 "Hello, world!" 프로그램을 만들어보겠습니다.
+이 프로그램은 새로운 언어를 배우는 사람들에게 좋은 예제가 되어왔습니다. 코드1-1은 HLA용 helloWorld 프로그램입니다.
+
+program helloWorld;
+#include( "stdlib.hhf" );
+begin helloWorld;
+ stdout.put( "Hello, World of Assembly Language", nl );
+end helloWorld;
+
+The #include statement in this program tells the HLA compiler to 
+include a set of declarations from the stdlib.hhf (standard library, HLA 
+Header File). Among other things, this file contains the declaration of the 
+stdout.put code that this program uses. 
+
+#include는 HLA 컴파일러에게 이 프로그램이 stdlib.hhf(표준 라이브러리, HLA Header File의 약자)의 선언들을
+포함할 것이라고 알려준다. 이 파일에는 우리가 사용할 stdout.put 코드의 선언이 들어있다.
+
+The stdout.put statement is the print statement for the HLA language. 
+You use it to write data to the standard output device (generally the console). 
+To anyone familiar with I/O statements in a high-level language, it should 
+be obvious that this statement prints the phrase Hello, World of Assembly 
+Language. The nl appearing at the end of this statement is a constant, also 
+defined in stdlib.hhf, that corresponds to the newline sequence.
+
+stdout.put은 HLA언어에서 표준 출력 장치(일반적으로 콘솔)에 데이터를 쓰는 출력에 사용된다.
+
+
+Note that semicolons follow the program, begin, stdout.put, and end
+statements. Technically speaking, a semicolon does not follow the #include
+statement. It is possible to create include files that generate an error if a 
+semicolon follows the #include statement, so you may want to get in the 
+habit of not putting a semicolon here.
+The #include is your first introduction to HLA declarations. The #include
+itself isn’t actually a declaration, but it does tell the HLA compiler to 
+substitute the file stdlib.hhf in place of the #include directive, thus inserting 
+several declarations at this point in your program. Most HLA programs you 
+will write will need to include one or more of the HLA Standard Library 
+header files (stdlib.hhf actually includes all the standard library definitions 
+into your program).
+Compiling this program produces a console application. Running this 
+program in a command window prints the specified string, and then control 
+returns to the command-line interpreter (or shell in Unix terminology).
+HLA is a free-format language. Therefore, you may split statements 
+across multiple lines if this helps to make your programs more readable. For 
+example, you could write the stdout.put statement in the helloWorld program 
+as follows:
+
