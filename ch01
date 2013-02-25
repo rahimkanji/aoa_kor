@@ -67,7 +67,8 @@ Header File). Among other things, this file contains the declaration of the
 stdout.put code that this program uses. 
 
 #include는 HLA 컴파일러에게 이 프로그램이 stdlib.hhf(표준 라이브러리, HLA Header File의 약자)의 선언들을
-포함할 것이라고 알려준다. 이 파일에는 우리가 사용할 stdout.put 코드의 선언이 들어있다.
+포함할 것이라고 알려줍니다. 이 파일에는 우리가 사용할 stdout.put 코드의 선언이 들어있습니다.
+
 
 The stdout.put statement is the print statement for the HLA language. 
 You use it to write data to the standard output device (generally the console). 
@@ -76,7 +77,10 @@ be obvious that this statement prints the phrase Hello, World of Assembly
 Language. The nl appearing at the end of this statement is a constant, also 
 defined in stdlib.hhf, that corresponds to the newline sequence.
 
-stdout.put은 HLA언어에서 표준 출력 장치(일반적으로 콘솔)에 데이터를 쓰는 출력에 사용된다.
+stdout.put은 HLA언어에서 표준 출력 장치(일반적으로 콘솔)에 데이터를 출력하는데 사용됩니다.
+고급언어의 입출력문에 익숙하다면 stdout.put이 어셈블리 언어에서 Hello, World를 출력하는
+부분이라는 것을 금방 알 수 있습니다. 끝에있는 nl은 상수인데 stdlib.hhf에 정의되어있고, 
+고급언어의 개행문자에 해당합니다.
 
 
 Note that semicolons follow the program, begin, stdout.put, and end
@@ -84,6 +88,12 @@ statements. Technically speaking, a semicolon does not follow the #include
 statement. It is possible to create include files that generate an error if a 
 semicolon follows the #include statement, so you may want to get in the 
 habit of not putting a semicolon here.
+
+program, begin, stdout.put, end 문을 보면 끝에 세미콜론이 있는 것을 알 수 있습니다.
+그런데 사실 문법적으로 정확하게 말하면 #include문 끝에 있는 세미콜론은 #include문을 위해
+있는 것이 아닙니다. #include문의 끝에 세미콜론이 있으면 에러를 내도록 #include문에 들어갈 파일을 만들어서
+세미콜론을 쓰지 않을 수도 있습니다.
+
 The #include is your first introduction to HLA declarations. The #include
 itself isn’t actually a declaration, but it does tell the HLA compiler to 
 substitute the file stdlib.hhf in place of the #include directive, thus inserting 
@@ -91,6 +101,14 @@ several declarations at this point in your program. Most HLA programs you
 will write will need to include one or more of the HLA Standard Library 
 header files (stdlib.hhf actually includes all the standard library definitions 
 into your program).
+
+이 #include가 HLA언어에서 여러분이 배우시게될 첫번째 선언문입니다. #include 자체는 사실 선언문이 아닙니다.
+단지 HLA 컴파일러에게 stdlib.hhf 파일을 #include 지시어가 있는 부분에 집어넣으라고
+알려주는 일을 할뿐입니다. 그래서 결과적으로 프로그램에 stdlib.hhf에있는 여러가지 선언들이 추가되는 것입니다.
+우리가 만들 대부분의 HLA 프로그램들은 하나 이상 HLA 표준 라이브러리의 헤더 파일을 포함할 것입니다(stdlib.hhf는
+거의 모든 표준 라이브러리 정의들을 포함하고 있습니다).
+
+
 Compiling this program produces a console application. Running this 
 program in a command window prints the specified string, and then control 
 returns to the command-line interpreter (or shell in Unix terminology).
@@ -98,4 +116,10 @@ HLA is a free-format language. Therefore, you may split statements
 across multiple lines if this helps to make your programs more readable. For 
 example, you could write the stdout.put statement in the helloWorld program 
 as follows:
+
+이 프로그램을 컴파일하면 콘솔용 어플리케이션이 만들어집니다. 만들어진 어플리케이션을
+윈도우의 커맨트 창에서 실행하면 문자열이 출력되고 다시 커맨드라인 인터프리터(유닉스의 쉘과 같은)가 나타납니다.
+HLA는 형식이 자유로운 언어입니다. 그렇게 해서 프로그램이 더 잘 읽혀질 수만 있다면 하나의 문장을 여러 줄에
+써도 됩니다. helloWorld 프로그램의 stdout.put 문장을 다음과 같이 써도 되는 것입니다.
+
 
