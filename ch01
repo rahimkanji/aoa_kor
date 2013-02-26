@@ -122,4 +122,95 @@ as follows:
 HLA는 형식이 자유로운 언어입니다. 그렇게 해서 프로그램이 더 잘 읽혀질 수만 있다면 하나의 문장을 여러 줄에
 써도 됩니다. helloWorld 프로그램의 stdout.put 문장을 다음과 같이 써도 되는 것입니다.
 
+stdout.put
+(
+"Hello, "
+"World of Assembly Language",
+nl
+);
+
+Indeed, nl (the newline) is really nothing more than a string constant,
+so (technically) the comma between the nl and the preceding string isn’t
+necessary. You’ll often see the above written as
+stdout.put( "Hello, World of Assembly Language" nl );
+Notice the lack of a comma between the string constant and nl; this turns
+out to be legal in HLA, though it applies only to certain constants; you may
+not, in general, drop the comma. Chapter 4 explains in detail how this
+works. This discussion appears here because you’ll probably see this “trick”
+employed by sample code prior to the formal explanation.
+
+실제로 nl(개행문자)는 단순히 문자열 상수일 뿐이라서 (기술적으로만 따지면) nl과
+그 앞의 문자열 사이의 콤마는 없어도 됩니다. 앞으로 stdout.put( "Hello, World of Assembly Language" nl ); 와 같이
+쓰는 것을 자주 보게 될 것입니다. 일반적으로는 콤마를 빠뜨리면 안됩니다. 일부 상수들만 콤마를 생략해서
+사용할 수 있으므로 주의해야합니다. 4장에서 세부적인 동작 원리를 설명하겠습니다. 여기에서는
+이런 트릭이 있다는 것만 알아두시기 바랍니다.
+
+1.2 Running Your First HLA Program
+The whole purpose of the “Hello, world!” program is to provide a simple
+example by which someone who is learning a new programming language
+can figure out how to use the tools needed to compile and run programs in
+that language. True, the helloWorld program in Section 1.1 helps demonstrate
+the format and syntax of a simple HLA program, but the real purpose behind
+a program like helloWorld is to learn how to create and run a program from
+beginning to end. Although the previous section presents the layout of an
+HLA program, it did not discuss how to edit, compile, and run that program.
+This section will briefly cover those details.
+
+1.2 첫번째 HLA 프로그램을 실행해보기
+
+"Hello, world!" 프로그램은 새로운 프로그래밍 언어를 배우는 사람에게 그 언어로된 프로그램의 컴파일과 실행에
+어떤 도구들이 사용되는지를 보여주는게 진짜 목적입니다. 1.1장에있는 helloWorld 프로그램를 통해
+간단한 HLA 프로그램의 문법과 형태를 알 수 있는 것도 사실입니다. 하지만 진짜 목적은
+프로그램을 생성하고 실행하는 방법을 전체적으로 배우는 것입니다. 이전 장에서 HLA 프로그램의
+구성을 보긴 했지만 어떻게 편집하고 컴파일하고 프로그램을 실행하는지는 설명하지 않았습니다.
+이번 장에서 그것들을 다루겠습니다.
+
+
+All of the software you need to compile and run HLA programs can be
+found at http://www.artofasm.com/ or at http://webster.cs.ucr.edu/. Select High
+Level Assembly from the Quick Navigation Panel and then the Download
+HLA link from that page. HLA is currently available for Windows, Mac OS X,
+Linux, and FreeBSD. Download the appropriate version of the HLA software
+for your system. From the Download HLA web page, you will also be able
+to download all the software associated with this book. If the HLA download
+doesn’t include them, you will probably want to download the HLA
+reference manual and the HLA Standard Library reference manual along
+with HLA and the software for this book. This text does not describe the
+entire HLA language, nor does it describe the entire HLA Standard Library.
+You’ll want to have these reference manuals handy as you learn assembly
+language using HLA.
+
+HLA 프로그램을 컴파일하고 실행하기 위해 필요한 모든 소프트웨어는 
+http://www.artofasm.com/ or at http://webster.cs.ucr.edu/ 에서 찾을 수 있습니다.
+High Level Assembly 메뉴를 선택하고 HLA 다운로드 링크를 클릭하면 됩니다. HLA는 현재
+윈도우, Mac OS X, 리눅스, FreeBSD에서 사용가능합니다. HLA 다운로드 관련 웹 페이지에서
+이 책과 관련된 모든 소프트웨어를 다운받을 수 있습니다. HLA의 레퍼런스 메뉴얼이나
+HLA 표준 라이브러리 레퍼런스 메뉴얼도 다운받는게 좋을 것입니다. 이 책에서
+HLA 언어의 전부를 설명하지 않고 HLA 표준 라이브러리도 전부를 설명하지 않을 것이므로
+이런 레퍼런스 메뉴얼이 필요하게 될겁니다.
+
+
+This section will not describe how to install and set up the HLA system
+because those instructions change over time. The HLA download page for
+each of the operating systems describes how to install and use HLA. Please
+consult those instructions for the exact installation procedure.
+Creating, compiling, and running an HLA program is very similar to the
+process you’d use when creating, compiling, or running a program in any
+computer language. First, because HLA is not an integrated development
+environment (IDE) that allows you to edit, compile, test and debug, and run
+your application all from within the same program, you’ll create and edit
+HLA programs using a text editor.
+
+이번 장에서 HLA 시스템을 설치하고 환경을 설정하는 방법을 설명하지 않을 것입니다. 그런 것들은
+항상 변하기 때문입니다. HLA 다운로드 페이지에 각 운영체제별로 HLA를 설치하고 사용하는
+방법에 대해서 나와있습니다. 정확한 설치를 위해 자세히 살펴보시기 바랍니다.
+HLA 프로그램을 만들고 컴파일하고 실행하는 것은 다른 어떤 언어의 프로그램과도 동일합니다.
+HLA용 통합 개발 환경(IDE)가 없기 때문에 하나의 프로그램 안에서 편집, 컴파일, 테스트, 디버깅,
+어플리케이션의 실행 등을 한꺼번에 할 수는 없습니다. 처음에는 텍스트 에디터를 이용해서
+HLA 프로그램을 생성하고 편집해야할 것입니다.
+
+
+
+
+
 
