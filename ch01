@@ -207,7 +207,59 @@ HLA programs using a text editor.
 HLA 프로그램을 만들고 컴파일하고 실행하는 것은 다른 어떤 언어의 프로그램과도 동일합니다.
 HLA용 통합 개발 환경(IDE)가 없기 때문에 하나의 프로그램 안에서 편집, 컴파일, 테스트, 디버깅,
 어플리케이션의 실행 등을 한꺼번에 할 수는 없습니다. 처음에는 텍스트 에디터를 이용해서
-HLA 프로그램을 생성하고 편집해야할 것입니다.
+HLA 프로그램을 생성하고 편집해야합니다.
+
+Windows, Mac OS X, Linux, and FreeBSD offer many text editor options.
+You can even use the text editor provided with other IDEs to create and edit
+HLA programs (such as those found in Visual C++, Borland’s Delphi, Apple’s
+Xcode, and similar languages). The only restriction is that HLA expects
+ASCII text files, so the editor you use must be capable of manipulating and
+saving text files. Under Windows you can always use Notepad to create HLA
+programs. If you’re working under Linux and FreeBSD you can use joe, vi, or
+emacs. Under Mac OS X you can use XCode or Text Wrangler or another
+editor of your preference.
+
+윈도우나 맥, 리눅스, FreeBSD 모두 다양한 에디터를 제공하고 있습니다. 다른 언어의 IDE(Visual C++, 볼랜드 델파이,
+애플의 Xcode 등)를 이용해서 HLA 프로그램을 편집할 수도 있습니다. HLA은 아스키 텍스트 파일만 인식하므로
+텍스트 파일을 만들고 저장할 수만 있으면 됩니다. 윈도우에서는 메모장을 사용할 수도 있습니다. 맥에서는
+XCode나 Text Wrangler 등 좋아하는 것을 사용하시면 됩니다.
+
+The HLA compiler2 is a traditional command-line compiler, which means
+that you need to run it from a Windows command-line prompt or a Linux/
+FreeBSD/Mac OS X shell. To do so, enter something like the following into
+the command-line prompt or shell window:
+hla hw.hla
+This command tells HLA to compile the hw.hla (helloWorld) program to
+an executable file. Assuming there are no errors, you can run the resulting
+program by typing the following command into your command prompt
+window (Windows):
+hw
+or into the shell interpreter window (Linux/FreeBSD/Mac OS X):
+./hw
+If you’re having problems getting the program to compile and run
+properly, please see the HLA installation instructions on the HLA download
+page. These instructions describe in great detail how to install, set up,
+and use HLA.
+
+HLA 컴파일러는 커맨드 라인 컴파일러입니다. 윈도우에서는 커맨드 라인 프롬프트에서 실행하시고,
+리눅스나 FreeBSD, 맥에서는 쉘에서 실행하시면 됩니다. 다음과 같이 커맨드 라인 프롬프트나
+쉘에서 입력하시기 바랍니다.
+
+hla hw.hla
+
+이 명령으로 
+
+
+1.3 Some Basic HLA Data Declarations
+HLA provides a wide variety of constant, type, and data declaration statements.
+Later chapters will cover the declaration sections in more detail,
+but it’s important to know how to declare a few simple variables in an HLA
+program.
+HLA predefines several different signed integer types including int8,
+int16, and int32, corresponding to 8-bit (1-byte) signed integers, 16-bit
+(2-byte) signed integers, and 32-bit (4-byte) signed integers, respectively.3
+Typical variable declarations occur in the HLA static variable section. A
+typical set of variable declarations takes the form shown in Figure 1-2.
 
 
 
