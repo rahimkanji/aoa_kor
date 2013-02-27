@@ -12,7 +12,8 @@ syntax of an HLA program and should understand the prerequisites that are
 needed to start learning new assembly language features in the chapters that 
 follow.
 
-이번장은 최대한 빨리 기본적인 어셈블리 프로그램을 만들어보도록 하겠습니다. 이번 장이 다룰 내용은:
+이번장은 여러분이 최대한 빨리 기본적인 어셈블리 프로그램을 만들수 있도록
+다음과 같은 내용을 다루겠습니다.
 - HLA 프로그램의 기본적인 문법을 보여주고
 - 인텔 CPU 아키텍쳐를 소개하고
 - 쉽게 쓸 수 있는 데이터 선언과 어셈블리 명령어, 고급 제어문을 알려주고
@@ -247,7 +248,19 @@ HLA 컴파일러는 커맨드 라인 컴파일러입니다. 윈도우에서는 �
 
 hla hw.hla
 
-이 명령으로 
+이렇게 입력하면 HLA 컴파일러가 hw.hla (helloWorld) 프로그램을 컴파일하고 실행 파일을 만들어냅니다.
+컴파일하면서 에러만 발생하지 않았다면 다음과 같이 입력해서 프로그램을 실행할 수 있습니다.
+윈도우의 커맨드 프롬프트는
+
+hw
+
+이고 쉘 인터프리터에서는 (리눅스/FreeBSD/맥)
+
+./hw
+
+를 입력하면 됩니다.
+컴파일이나 실행을 하실 수 없다면 HLA 다운로드 페이지에 있는 HLA 설치 안내를 확인하시기 바랍니다.
+HLA의 설치와 환경 설정, 사용법에 대해 자세한 설명이 있습니다.
 
 
 1.3 Some Basic HLA Data Declarations
@@ -260,6 +273,14 @@ int16, and int32, corresponding to 8-bit (1-byte) signed integers, 16-bit
 (2-byte) signed integers, and 32-bit (4-byte) signed integers, respectively.3
 Typical variable declarations occur in the HLA static variable section. A
 typical set of variable declarations takes the form shown in Figure 1-2.
+
+1.3 HLA의 기본 데이터에 대한 설명
+
+HLA는 다양한 상수와 타입, 데이터 선언들이 있습니다. 다음에 데이터 선언 섹션에 대해 자세히 설명하겠지만,
+간단한 변수들을 선언하는 방법을 먼저 배우도록 하겠습니다.
+HLA는 8비트(1바이트), 16비트(2바이트), 32비트(4바이트) 크기의 부호있는 정수를 
+int8, int16, int32 와 같은 타입을 몇가지 미리 정의해놓았습니다. 일반적인 변수 선언은 그림 1-2와 같이 합니다.
+
 
 
 
