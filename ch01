@@ -281,6 +281,72 @@ HLA는 다양한 상수와 타입, 데이터 선언들이 있습니다. 다음�
 HLA는 8비트(1바이트), 16비트(2바이트), 32비트(4바이트) 크기의 부호있는 정수를 
 int8, int16, int32 와 같은 타입을 몇가지 미리 정의해놓았습니다. 일반적인 변수 선언은 그림 1-2와 같이 합니다.
 
+i8, i16, and i32
+are the names of
+the variables to
+declare here.
+
+static is the keyword that begins
+the variable declaration section.
+static
+i8: int8;
+i16: int16;
+i32: int32;
+int8, int16, and int32 are the names
+of the data types for each declaration.
+
+i8, i16, i32는 여기 선언된 변수들의 이름입니다.
+static은 변수 선언을 위한 섹션이 시작되는걸 표시하는 키워드입니다.
+int8, int16, int32는 선언문들의 데이터 타입입니다.
+
+Those who are familiar with the Pascal language should be comfortable
+with this declaration syntax. This example demonstrates how to declare
+three separate integers: i8, i16, and i32. Of course, in a real program you
+should use variable names that are more descriptive. While names like i8
+and i32 describe the type of the object, they do not describe its purpose.
+Variable names should describe the purpose of the object.
+In the static declaration section, you can also give a variable an initial
+value that the operating system will assign to the variable when it loads the
+program into memory. Figure 1-3 provides the syntax for this.
+
+파스칼 언어에 익숙하신 분들은 이런 선언문이 편하게 느껴지실 겁니다. 이 예제는 세가지 정수형(
+i8, i16, i32)을 선언하는 방법을 보여줍니다. 물론 실제 프로그램에서는 좀더 의미있는 이름을
+사용하셔야합니다. i8이나 i32같은 이름은 각 객체의 타입은 나타낼 수 있지만 어떤 목적으로 사용되는
+객체인지를 알 수 없습니다. static 선언 섹션에서 운영체제가 프로그램을 메모리로 로드할 때
+각 변수가 어떤 초기값을 가지게될지를 지정할 수 있습니다. 그림 1-3은 그러기위한 문법을 보여줍니다.
+
+The constant assignment
+operator, :=, tells HLA
+that you wish to initialize
+the specified variable
+with an initial value.
+
+static
+i8: int8 := 8;
+i16: int16 := 1600;
+i32: int32 := -320000;
+The operand after the
+constant assignment
+operator must be a
+constant whose type
+is compatible with the
+variable you are
+initializing.
+
+
+
+It is important to realize that the expression following the assignment
+operator (:=) must be a constant expression. You cannot assign the values of
+other variables within a static variable declaration.
+Those familiar with other high-level languages (especially Pascal) should
+note that you can declare only one variable per statement. That is, HLA does
+not allow a comma-delimited list of variable names followed by a colon and a
+type identifier. Each variable declaration consists of a single identifier, a
+colon, a type ID, and a semicolon.
+Listing 1-2 provides a simple HLA program that demonstrates the use of
+variables within an HLA program.
+
+
 
 
 
