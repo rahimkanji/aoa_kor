@@ -348,7 +348,32 @@ colon, a type ID, and a semicolon.
 Listing 1-2 provides a simple HLA program that demonstrates the use of
 variables within an HLA program.
 
-할당 연산자 다음에 나오는 표현식은 반드시 상수 표현식이어야 합니다. 상수 변수 선언 섹션에서
+할당 연산자(:=) 다음에 나오는 표현식은 반드시 상수 표현식이어야 합니다. 상수 변수의 선언에
+다른 변수의 값을 할당할 수는 없습니다. 다른 고급 언어(파스칼등)에서와 같이 하나의 선언문에는
+하나의 변수만 선언되야 합니다. HLA 선언문에서 콜론과 타입 표시 다음에 변수들의 이름을
+콤마를붙여 여러개 쓰는 형식은 허용되지 않습니다. 각 변수 선언은 하나의 변수 이름과
+콜론, 타입, 세미콜론으로 이루어져야합니다.
+코드1-3는 HLA 프로그램에서 어떻게 변수를 사용하는지에 대한 간단한 예제입니다.
+
+In addition to static variable declarations, this example introduces three
+new concepts. First, the stdout.put statement allows multiple parameters. If
+you specify an integer value, stdout.put will convert that value to its string
+representation on output.
+The second new feature introduced in Listing 1-2 is the stdin.get
+statement. This statement reads a value from the standard input device
+(usually the keyboard), converts the value to an integer, and stores the
+integer value into the NotInitialized variable. Finally, Listing 1-2 also
+introduces the syntax for (one form of) HLA comments. The HLA compiler
+ignores all text from the // sequence to the end of the current line. (Those
+familiar with Java, C++, and Delphi should recognize these comments.)
+
+이 예제에는 정적 변수 선언과함께 새로운 개념 3개가 있습니다. 첫번째로
+stdout.put 문장은 여러개의 파라미터를 가질 수 있습니다. 정수값을
+파라미터로 사용하면 stdout.put이 문자열로 변환해서 출력해줍니다.
+코드1-3에서 두번째로 알게되는 새로운 기능은 stdin.get 문장입니다. 이 문장은 표준 입력 장치에서
+값을 읽어서 정수로 변환한 후 NotInitialized 변수에 저장합니다. 마지막으로
+코드 1-2에서 코멘트를 작성하는 방법중 한가지를 보게됩니다. HLA 컴파일러는
+현재 코드// 
 
 
 
