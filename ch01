@@ -372,9 +372,102 @@ stdout.put 문장은 여러개의 파라미터를 가질 수 있습니다. 정�
 파라미터로 사용하면 stdout.put이 문자열로 변환해서 출력해줍니다.
 코드1-3에서 두번째로 알게되는 새로운 기능은 stdin.get 문장입니다. 이 문장은 표준 입력 장치에서
 값을 읽어서 정수로 변환한 후 NotInitialized 변수에 저장합니다. 마지막으로
-코드 1-2에서 코멘트를 작성하는 방법중 한가지를 보게됩니다. HLA 컴파일러는
-현재 코드// 
+코드 1-2에서 주석을 작성하는 방법중 한가지를 보게됩니다. HLA 컴파일러는
+각 줄에서 // 다음에 어떤 내용이 있던 무시합니다. (자바, C++, 델파이 등이 동일한
+주석 표시를 씁니다.)
 
+1.4 Boolean Values
+HLA and the HLA Standard Library provide limited support for boolean
+objects. You can declare boolean variables, use boolean literal constants,
+use boolean variables in boolean expressions, and you can print the values
+of boolean variables.
+Boolean literal constants consist of the two predefined identifiers true
+and false. Internally, HLA represents the value true using the numeric value 1;
+HLA represents false using the value 0. Most programs treat 0 as false and
+anything else as true, so HLA’s representations for true and false should
+prove sufficient.
+To declare a boolean variable, you use the boolean data type. HLA uses
+a single byte (the least amount of memory it can allocate) to represent
+boolean values. The following example demonstrates some typical
+declarations:
+
+1.4 부울 변수
+HLA과 HLA 표준 라이브러리로 부울 객체를 사용할 수 있습니다. 부울 변수를 선언할 수 있고,
+부울값을 표현하는 문자 상수와 부울 변수를 사용하여 부울 표현식을 사용할 수 있습니다.
+그리고 부울 변수의 값을 출력할 수도 있습니다.
+부울 문자 상수는 true와 false 라는 이름으로 미리 정의된 상수입니다. HLA은 내부적으로
+숫자 1을 참으로 표현하고, 0으로 거짓값을 표현합니다. 대부분의 프로그램들이
+0을 거짓으로 처리하고 다른 값들을 참으로 표현하므로 HLA이 참과 거짓을 표현하는데
+왜 그런 값을 사용하는지 알 수 있습니다.
+부울 데이터 타입을 사용하면 부울 변수를 선언할 수 있습니다. HLA은 부울 값을 표현하는데
+1바이트 (할당할 수 있는 최소한의 메모리 크기)를 사용합니다. 다음 예제에서
+몇가지 전형적인 선언문을 볼 수 있습니다.
+
+static
+BoolVar: boolean;
+HasClass: boolean := false;
+IsClear: boolean := true;
+
+As this example demonstrates, you can initialize boolean variables if you
+desire.
+Because boolean variables are byte objects, you can manipulate them
+using any instructions that operate directly on 8-bit values. Furthermore, as
+long as you ensure that your boolean variables only contain 0 and 1 (for
+false and true, respectively), you can use the 80x86 and, or, xor, and not
+instructions to manipulate these boolean values (these instructions are
+covered in Chapter 2).
+
+위의 예제처럼 부울 변수를 초기화할 수 있습니다. 부울 변수가 1바이트 객체이기 때문에
+8비트 값을 취급하는 어떤 연산자든지 이용할 수 있습니다. 또한 부울 변수가
+0 아니면 1(거짓과 참) 값만 가지고 있기 때문에 80x86의 and, or, xor, not 명령어
+(이 명령어들은 2장에서 다룹니다)를 사용해서 부울 값들을 조작할 수 있습니다.
+
+You can print boolean values by making a call to the stdout.put routine.
+For example:
+
+부울 변수는 다음 예제와 같이 stdout.put 루틴을 이용해서 출력할 수 있습니다.
+
+stdout.put( BoolVar )
+
+This routine prints the text true or false depending upon the value of
+the boolean parameter (0 is false; anything else is true). Note that the HLA
+Standard Library does not allow you to read boolean values via stdin.get.
+
+
+1.5 Character Values
+HLA lets you declare 1-byte ASCII character objects using the char data type.
+You may initialize character variables with a literal character value by
+surrounding the character with a pair of apostrophes. The following example
+demonstrates how to declare and initialize character variables in HLA:
+
+static
+c: char;
+LetterA: char := 'A';
+
+You can print character variables use the stdout.put routine, and you can
+read character variables using the stdin.get procedure call.
+
+1.6 An Introduction to the Intel 80x86 CPU Family
+Thus far, you’ve seen a couple of HLA programs that will actually compile
+and run. However, all the statements appearing in programs to this point
+have been either data declarations or calls to HLA Standard Library routines.
+There hasn’t been any real assembly language. Before we can progress any
+further and learn some real assembly language, a detour is necessary; unless
+you understand the basic structure of the Intel 80x86 CPU family, the
+machine instructions will make little sense.
+The Intel CPU family is generally classified as a Von Neumann Architecture
+Machine. Von Neumann computer systems contain three main building blocks:
+the central processing unit (CPU), memory, and input/output (I/0) devices. These
+three components are interconnected using the system bus (consisting of the
+address, data, and control buses). The block diagram in Figure 1-4 shows this
+relationship.
+The CPU communicates with memory and I/O devices by placing a
+numeric value on the address bus to select one of the memory locations or
+I/O device port locations, each of which has a unique binary numeric address.
+Then the CPU, memory, and I/O devices pass data among themselves by
+placing the data on the data bus. The control bus contains signals that
+determine the direction of the data transfer (to/from memory and to/from
+an I/O device).
 
 
 
