@@ -521,7 +521,9 @@ following names: AX, BX, CX, DX, SI, DI, BP, and SP.
 운영체제나 디버거 등의 시스템레벨 툴을 구현할 때 사용됩니다. 그런 소프트웨어 개발은
 이 책의 범위 밖입니다. 80x86(인텔 계열) CPU는 어플리케이션에서 사용할 수 있도록 여러 개의
 범용 레지스터를 가지고 있습니다. 8개의 범용 레지스터의 이름은 각각: EAX,
-EBX, ECX, EDX, ESI, EDI, EBP, ESP 입니다.
+EBX, ECX, EDX, ESI, EDI, EBP, ESP 입니다. 각 이름에 붙은 E는 확장을 의미합니다.
+16비트 레지스터의 이름이 AX,BX,CX,DX,SI,DI,BP,SP 인데 여기에서 확장되어서
+32비트가 되었다는 의미입니다.
 
 
 Finally, the 80x86 CPUs provide eight 8-bit registers that have the 
@@ -538,6 +540,8 @@ here. A very common mistake in programs written by beginning assembly
 language programmers is register value corruption because the programmer 
 did not completely understand the ramifications of the relationship shown in 
 Figure 1-5. 
+
+80x86 CPU는
 
 
 
