@@ -513,11 +513,15 @@ The E prefix on each name stands for extended. This prefix differentiates the 32
 registers from the eight 16-bit registers that have the 
 following names: AX, BX, CX, DX, SI, DI, BP, and SP.
 
-80x86 CPU의 레지스터는 4가지로 종류로 나눌 수 있습니다. 일반 레지스터와
+80x86 CPU의 레지스터는 4가지로 종류로 나눌 수 있습니다. 범용 레지스터와
 어플리케이션도 접근가능한 특수 레지스터, 세그먼트 레지스터, 커널 모드에서만
 접근할 수 있는 특수 레지스터입니다. 세그먼트 레지스터는 최신 32비트 운영체제(윈도우,
-맥, FreeBSD, 리눅스 등)에서 잘 사용되지 않고, 우리는 32비트 운영체제에서 동작할
-프로그램을 만들 계획이므로 세그먼트 레지스터
+맥, FreeBSD, 리눅스 등)에서 잘 사용되지 않고, 또 우리는 32비트 운영체제에서 동작할
+프로그램을 만들 계획이므로 세그먼트 레지스터는 설명하지 않겠습니다. 커널 모드용 특수 레지스터는
+운영체제나 디버거 등의 시스템레벨 툴을 구현할 때 사용됩니다. 그런 소프트웨어 개발은
+이 책의 범위 밖입니다. 80x86(인텔 계열) CPU는 어플리케이션에서 사용할 수 있도록 여러 개의
+범용 레지스터를 가지고 있습니다. 8개의 범용 레지스터의 이름은 각각: EAX,
+EBX, ECX, EDX, ESI, EDI, EBP, ESP 입니다.
 
 
 Finally, the 80x86 CPUs provide eight 8-bit registers that have the 
