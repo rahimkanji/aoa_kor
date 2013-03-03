@@ -497,7 +497,43 @@ CPU는 메모리나 I/O 장치 들과 통신하기 위해 주소 버스에 숫�
 가지고 있습니다.
 
 
+The 80x86 CPU registers can be broken down into four categories: 
+general-purpose registers, special-purpose application-accessible registers, 
+segment registers, and special-purpose kernel-mode registers. Because 
+the segment registers aren’t used much in modern 32-bit operating systems 
+(such as Windows, Mac OS X, FreeBSD, and Linux) and because this text is 
+geared to writing programs written for 32-bit operating systems, there is little 
+need to discuss the segment registers. The special-purpose kernel-mode registers 
+are intended for writing operating systems, debuggers, and other systemlevel tools. 
+Such software construction is well beyond the scope of this text. 
+The 80x86 (Intel family) CPUs provide several general-purpose registers 
+for application use. These include eight 32-bit registers that have the 
+following names: EAX, EBX, ECX, EDX, ESI, EDI, EBP, and ESP.
+The E prefix on each name stands for extended. This prefix differentiates the 32-bit 
+registers from the eight 16-bit registers that have the 
+following names: AX, BX, CX, DX, SI, DI, BP, and SP.
 
+80x86 CPU의 레지스터는 4가지로 종류로 나눌 수 있습니다. 일반 레지스터와
+어플리케이션도 접근가능한 특수 레지스터, 세그먼트 레지스터, 커널 모드에서만
+접근할 수 있는 특수 레지스터입니다. 세그먼트 레지스터는 최신 32비트 운영체제(윈도우,
+맥, FreeBSD, 리눅스 등)에서 잘 사용되지 않고, 우리는 32비트 운영체제에서 동작할
+프로그램을 만들 계획이므로 세그먼트 레지스터
+
+
+Finally, the 80x86 CPUs provide eight 8-bit registers that have the 
+following names: AL, AH, BL, BH, CL, CH, DL, and DH.
+Unfortunately, these are not all separate registers. That is, the 80x86 
+does not provide 24 independent registers. Instead, the 80x86 overlays the 
+32-bit registers with the 16-bit registers, and it overlays the 16-bit registers 
+with the 8-bit registers. Figure 1-5 shows this relationship. 
+The most important thing to note about the general-purpose registers is 
+that they are not independent. Modifying one register may modify as many as 
+three other registers. For example, modification of the EAX register may very 
+well modify the AL, AH, and AX registers. This fact cannot be overemphasized 
+here. A very common mistake in programs written by beginning assembly 
+language programmers is register value corruption because the programmer 
+did not completely understand the ramifications of the relationship shown in 
+Figure 1-5. 
 
 
 
