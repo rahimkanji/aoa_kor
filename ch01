@@ -433,6 +433,8 @@ This routine prints the text true or false depending upon the value of
 the boolean parameter (0 is false; anything else is true). Note that the HLA
 Standard Library does not allow you to read boolean values via stdin.get.
 
+파라미터의 부울 값에 따라(0은 false, 그 외에는 true) true나 false 라고 출력해줍니다. HLA 표준 라이브러리에서
+stdin.get으로 부울 값을 읽을 수 없다는 것에 주의하시기 바랍니다.
 
 1.5 Character Values
 HLA lets you declare 1-byte ASCII character objects using the char data type.
@@ -440,12 +442,21 @@ You may initialize character variables with a literal character value by
 surrounding the character with a pair of apostrophes. The following example
 demonstrates how to declare and initialize character variables in HLA:
 
+1.5 문자 값
+
+HLA에서 1바이트 아스키 문자는 char 데이터 타입으로 선언됩니다. 문자 값은
+작은 따옴표 '를 문자 앞뒤로 써서 표현하고 문자 변수의 초기화 값으로 쓸 수 있습니다. 다음 예제를 보면
+HLA에서 문자 변수를 선언하고 초기화하는 방법을 알 수 있습니다.
+
 static
 c: char;
 LetterA: char := 'A';
 
 You can print character variables use the stdout.put routine, and you can
 read character variables using the stdin.get procedure call.
+
+문자 변수를 출력할 때는 stdout.put 루틴을 사용하고, 문자 변수로 값을 읽을 때는
+stdin.get을 호출하시기 바랍니다.
 
 1.6 An Introduction to the Intel 80x86 CPU Family
 Thus far, you’ve seen a couple of HLA programs that will actually compile
@@ -455,12 +466,21 @@ There hasn’t been any real assembly language. Before we can progress any
 further and learn some real assembly language, a detour is necessary; unless
 you understand the basic structure of the Intel 80x86 CPU family, the
 machine instructions will make little sense.
+
+1.6 Intel 80x86 CPU 계열 소개
+
 The Intel CPU family is generally classified as a Von Neumann Architecture
 Machine. Von Neumann computer systems contain three main building blocks:
 the central processing unit (CPU), memory, and input/output (I/0) devices. These
 three components are interconnected using the system bus (consisting of the
 address, data, and control buses). The block diagram in Figure 1-4 shows this
 relationship.
+
+인텔 CPU 계열는 일반적으로 폰 노이만 구조로 분류됩니다. 폰 노이만 컴퓨터 시스템은
+크게 3개의 블록(중앙 처리 장치(CPU), 메모리, 입출력(I/O) 장치)으로 이루어집니다.  이 세가지
+요소는 시스템 버스(주소값,데이터, 제어 버스로 이루어지는)로 연결됩니다. 그림 1-4의
+블록 다이어그램을 보면 그것들의 연결 모습을 알 수 있습니다.
+
 The CPU communicates with memory and I/O devices by placing a
 numeric value on the address bus to select one of the memory locations or
 I/O device port locations, each of which has a unique binary numeric address.
@@ -468,6 +488,14 @@ Then the CPU, memory, and I/O devices pass data among themselves by
 placing the data on the data bus. The control bus contains signals that
 determine the direction of the data transfer (to/from memory and to/from
 an I/O device).
+
+CPU는 메모리나 I/O 장치 들과 통신하기 위해 주소 버스에 숫자 값을 전송합니다.
+메모리나 입출력 장치의 포트는 고유한 번호를 가지고 있어서
+주소 버스의 값에 따라 메모리의 특정 지역을 선택하거나 입출력 장치의 포트를 선택할 수 있습니다.
+그런 후 CPU와 메모리, 입출력 장치들은 데이터 버스에 데이터를 전송해서 서로 간에 데이터를 주고 받습니다.
+제어 버스는 데이터의 전송 방향(메모리로부터 입출력 장치로, 아니면 입출력 장치로부터 메모리로)을 결정하는 신호를
+가지고 있습니다.
+
 
 
 
