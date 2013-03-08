@@ -541,7 +541,74 @@ language programmers is register value corruption because the programmer
 did not completely understand the ramifications of the relationship shown in 
 Figure 1-5. 
 
-80x86 CPU는
+80x86 CPU는 AL, AH, BL, BH, CL, CH, DL, DH 총 8개의 8비트 레지스터를 가지고 있습니다.
+불행히도 이것들이 전부 개별적인 레지스터는 아닙니다. 80x86이 총 24개의 독립적인
+레지스터를 가지고 있는 것이 아닙니다. 대신 16비트 레지스터가 합쳐져서 32비트 레지스터가 되고,
+8비트 레지스터가 합쳐져서 16비트 레지스터가 됩니다. 범용 레지스터에 대해 가장 알아두셔야
+할 사실이 지금까지 설명한 레지스터들이 모두 개별적인 레지스터가 아니라는 것입니다. 하나의
+레지스터의 값을 바꾸면 다른 세개의 레지스터의 값이 바뀝니다. EAX 레지스터를 변경하면
+무조건 AL, AH와 AX 레지스터도 변경됩니다. 아주 명심하셔야 할 것입니다. 어셈블리 언어를
+처음 시작하시는 분들이 자주 하시는 실수가 레지스터 값들을 깨뜨리는 것입니다.
+그림 1-5에 있는 레지스터들의 관계를 완벽하게 이해하지 못하셨기 때문입니다.
+
+The EFLAGS register is a 32-bit register that encapsulates several single-bit 
+boolean (true/false) values. Most of the bits in the EFLAGs register are either
+reserved for kernel mode (operating system) functions, or are of little interest 
+to the application programmer. Eight of these bits (or flags) are of interest to 
+application programmers writing assembly language programs. These are the overflow,
+direction, interrupt disable1, sign, zero, auxiliary carry, parity, and carry flags. 
+The following diagram shows their layout within the lower 16-bits of the EFLAGS register.
+
+EFLAGS 레지스터는 여러개의 1비트 부울 (참/거짓) 값들을 가지고 있는 32비트 레지스터입니다. EFLAG 레지스터에
+있는 대부분의 비트들은 커널 모드(운영체제용) 기능을 위해 사용되므로 어플리케이션
+프로그래머들에게는 관련이 없습니다. 그 중에 8개의 비트(플래그라고 불림)가 어플리케이션
+프로그래머들과 관련이 있습니다. 오버플로우 방향, 인터럽트 금지, 부호, 제로, 보조 캐리,
+패리티, 캐리 플래그입니다. 다음 그림에는 EFLAGS 레지스터의 하위 16비트의 구조를 보여줍니다.
+
+
+Figure 2.6  Layout of the FLAGS Register (Lower 16 bits of EFLAGS)
+
+그림 2.6 FLAGS 레지스터의 구조(EFLAGS의 하위 16비트)
+
+Of the eight flags that are usable by application programmers, four flags in particular 
+are extremely valuable: the overflow, carry, sign, and zero flags. Collectively, we will 
+call these four flags the condition codes2. The state of these flags (boolean variables) 
+will let you test the results of previous computations and allow you to make decisions in
+your programs. For example, after comparing two values, the state of the condition code 
+flags will tell you if one value is less than, equal to, or greater than a second value. The 80x86 CPUs
+provide special machine instructions that let you test the flags, alone or in various combinations.
+
+8개 모두가 어플리케이션 프로그래머에게 쓸모가 있지만 오버플로우, 캐리, 부호, 제로 플래그는
+특별히 알아두셔야 합니다. 
+
+The last register of interest is the EIP (instruction pointer) register. This 32-bit register 
+contains the memory address of the next machine instruction to execute. Although you will 
+manipulate this register directly in your programs, the instructions that modify its value 
+treat this register as an implicit operand. Therefore, you will not need to remember much about 
+this register since the 80x86 instruction set effectively hides it from you.
+
+One important fact that comes as a surprise to those just learning assembly language is that 
+almost all calculations on the 80x86 CPU must involve a register. For example, to add two (memory)
+variables together, storing the sum into a third location, you must load one of the memory operands
+into a register, add the second operand to the value in the register, and then store the register 
+away in the destination memory location. Registers are a middleman in nearly every calculation. 
+Therefore, registers are very important in 80x86 assembly language programs.
+
+Another thing you should be aware of is that although the general purpose registers have the name
+"general purpose" you should not infer that you can use any register for any purpose. The SP/ESP register 
+for example, has a very special purpose (it's the stack pointer) that effectively prevents you from 
+using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its
+usefulness as a general purpose register. All the 80x86 registers have their own special purposes 
+that limit their use in certain contexts. For the time being, you should simply avoid the use of 
+the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are 
+not completely interchangeable in your programs.
+
+
+
+
+
+
+
 
 
 
