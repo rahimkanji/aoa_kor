@@ -578,14 +578,15 @@ your programs. For example, after comparing two values, the state of the conditi
 flags will tell you if one value is less than, equal to, or greater than a second value. The 80x86 CPUs
 provide special machine instructions that let you test the flags, alone or in various combinations.
 
-8개 모두가 어플리케이션 프로그래머에게 쓸모가 있지만 오버플로우, 캐리, 부호, 제로 플래그는
-특별히 알아두셔야 합니다. 
+8개 모두가 어플리케이션 프로그래머에게 쓸모가 있지만 오버플로우, 캐리, 부호, 제로 플래그는 꼭 알아두셔야 합니다. 우리는 잠시 뒤에 조건문을 사용할 때 이 4개의 플래그들을 사용합니다. 여러분은 이 플래그들의 상태(부울 값)를 이용하여 수행한 계산의 결과를 확인하거나 프로그램에서 필요한 선택을 할수 있게 됩니다. 2개의 변수를 비교할 때를 예로 들면, 조건에 필요한 플래그들의 상태를 이용하여 어떤 값이 다른 값보다 작거나 같거나 큰지 확인할 수 있습니다. 80x86 CPU에는 플래그 하나를 테스트하거나 여러개를 동시에 테스트할 수 있는 기계어들을 제공합니다.
 
 The last register of interest is the EIP (instruction pointer) register. This 32-bit register 
 contains the memory address of the next machine instruction to execute. Although you will 
 manipulate this register directly in your programs, the instructions that modify its value 
 treat this register as an implicit operand. Therefore, you will not need to remember much about 
 this register since the 80x86 instruction set effectively hides it from you.
+
+마지막으로 관심가져야 할 레지스터는 EIP(instruction pointer 명령 포인터) 레지스터입니다. 이 32비트 레지스터는 다음에 실행할 기계 명령에 대한 메모리 주소를 가지고 있습니다. 여러분이 이 레지스터를 직접 조작하고 싶으실 때도 있을겁니다. 하지만 이 레지스터의 값을 바꾸는 명령들은 이미 이 레지스터를 보이지 않게 참조하고 있습니다. 80x86 명령어들은 이 레지스터를 직접 참조하지 않고 사용할 수 있도록 처리되어있기 때문에 직접 신경쓰실 일은 없을 것입니다.
 
 One important fact that comes as a surprise to those just learning assembly language is that 
 almost all calculations on the 80x86 CPU must involve a register. For example, to add two (memory)
@@ -600,8 +601,8 @@ for example, has a very special purpose (it's the stack pointer) that effectivel
 using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its
 usefulness as a general purpose register. All the 80x86 registers have their own special purposes 
 that limit their use in certain contexts. For the time being, you should simply avoid the use of 
-the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are 
-not completely interchangeable in your programs.
+the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are not completely interchangeable in your programs.
+
 
 
 
