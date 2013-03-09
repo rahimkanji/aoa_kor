@@ -595,14 +595,11 @@ into a register, add the second operand to the value in the register, and then s
 away in the destination memory location. Registers are a middleman in nearly every calculation. 
 Therefore, registers are very important in 80x86 assembly language programs.
 
-Another thing you should be aware of is that although the general purpose registers have the name
-"general purpose" you should not infer that you can use any register for any purpose. The SP/ESP register 
-for example, has a very special purpose (it's the stack pointer) that effectively prevents you from 
-using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its
-usefulness as a general purpose register. All the 80x86 registers have their own special purposes 
-that limit their use in certain contexts. For the time being, you should simply avoid the use of 
-the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are not completely interchangeable in your programs.
+어셈블리 언어를 처음 접하기 시작하신 분들이 놀라시는 것 하나가 80x86 CPU가 실행하는 거의 모든 연산들이 레지스터를 필요로 한다는 것입니다. 2개의 (메모리에있는) 변수를 더해서 또 다른 장소에 저장하는 것을 예를 들면, 메모리에 있는 하나의 피연산자를 레지스터로 읽어들이고 다른 피연산자를 더해서 첫 오퍼랜드가 있는 레지스터에 저장합니다. 그 후에 최종 메모리 위치에 레지스터 값을 저장합니다. 레지스터는 거의 모든 연산에 중개인 역할을 하게됩니다. 그래서 80x86 어셈블리 언어 프로그램에서 레지스터가 아주 중요한 것입니다.
 
+Another thing you should be aware of is that although the general purpose registers have the name "general purpose" you should not infer that you can use any register for any purpose. The SP/ESP register for example, has a very special purpose (it's the stack pointer) that effectively prevents you from using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its usefulness as a general purpose register. All the 80x86 registers have their own special purposes that limit their use in certain contexts. For the time being, you should simply avoid the use of the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are not completely interchangeable in your programs.
+
+또 하나 알아두셔야 할 것이 있습니다. 범용 레지스터가 이름에 "범용"이 들어가지만 각 레지스터가 
 
 
 
