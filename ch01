@@ -612,15 +612,21 @@ The 80x86 CPUs provide just over a hundred to many thousands of different machin
 
 Without question, the MOV instruction is the most often-used assembly language statement. In a typical program, anywhere from 25-40% of the instructions are typically MOV instructions. As its name suggests, this instruction moves data from one location to another4. The HLA syntax for this instruction is
 
-
+틀림없이 MOV 명령이야말로 가장 자주 사용되는 어셈블리 명령어입니다. 일반적인 프로그램에서는 전체 명령어중에 25-40%가 MOV 명령어입니다. 그 이름에서 알 수 있듯이 이 명령어는 데이터를 하나의 장소에서 다른 곳으로 옮겨주는 일을 합니다. 이 명령어의 HLA 문법은 다음과 같습니다.
 
 mov( source_operand, destination_operand );
 
+
 The source_operand can be a register, a memory variable, or a constant. The destination_operand may be a register or a memory variable. Technically the 80x86 instruction set does not allow both operands to be memory variables; HLA, however, will automatically translate a MOV instruction with two 16- or 32-bit memory operands into a pair of instructions that will copy the data from one location to another. In a high level language like Pascal or C/C++, the MOV instruction is roughly equivalent to the following assignment statement:
+
+source_operand는 레지스터도 올 수 있고 메모리 변수나 상수도 될 수 있습니다. destination_operand는 레지스터나 메모리 변수가 됩니다. 기술적으로 80x86 명령어는 두개의 오퍼랜드가 모두 메모리 변수가 될 수 없습니다만, HLA는 자동으로 두개의 16비트나 32비트 메모리 오퍼랜드의 MOV 명령어 한개를 2개의 명령어로 분리해줍니다. 그래서 어떠한 위치의 데이터도 옮길 수 있습니다. 파스칼이나 C/C++ 등의 고급 언어와 비교해보면 MOV 명령어는 다음의 할당문과 유사합니다.
+
 
 destination_operand = source_operand ;
 
 Perhaps the major restriction on the MOV instruction's operands is that they must both be the same size. That is, you can move data between two eight-bit objects, between two 16-bit objects, or between two 32-bit objects; you may not, however, mix the sizes of the operands. The following table lists all the legal combinations:
+
+MOV 명령어의 오퍼랜드에는 두개가 서로 같은 크기여야한다는 큰 제약사항이 있습니다. 다시 말하면 두개의 8비트 객체간의 데이터를 옮기거나 16비트 객체간에 혹은 32비트 객체간에 데이터를 옮길 수는 있지만 다른 크기의 오퍼랜드를 사용할 수는 없다는 것입니다. 다음 테이블에서 올바른 조합의 리스트를 볼 수 있습니다.
 
 Table 1: Legal 80x86 MOV Instruction Operands
 
