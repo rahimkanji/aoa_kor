@@ -599,7 +599,7 @@ Therefore, registers are very important in 80x86 assembly language programs.
 
 Another thing you should be aware of is that although the general purpose registers have the name "general purpose" you should not infer that you can use any register for any purpose. The SP/ESP register for example, has a very special purpose (it's the stack pointer) that effectively prevents you from using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its usefulness as a general purpose register. All the 80x86 registers have their own special purposes that limit their use in certain contexts. For the time being, you should simply avoid the use of the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are not completely interchangeable in your programs.
 
-또 하나 알아두셔야 할 것이 있습니다. 범용 레지스터가 이름에 "범용"이 들어가지만 각 레지스터가 
+또 하나 알아두셔야 할 것이 있습니다. 범용 레지스터가 이름에 "범용"이 들어가지만 각 레지스터를 어떤 용도에든지 상관없이 사용할 수는 없다는 것입니다. SP/ESP레지스터를 예를 들면, 특정 용도 (스택을 가르키는 포인터)에만 사용될 수 있어서 다른 용도로는 사용하지 못하도록 막혀있습니다. 비슷하게 BP/EBP 레지스터도 정해진 용도가 있어서 범용적으로는 사용할 수 없습니다.
 
 
 
