@@ -599,7 +599,30 @@ Therefore, registers are very important in 80x86 assembly language programs.
 
 Another thing you should be aware of is that although the general purpose registers have the name "general purpose" you should not infer that you can use any register for any purpose. The SP/ESP register for example, has a very special purpose (it's the stack pointer) that effectively prevents you from using it for any other purpose. Likewise, the BP/EBP register has a special purpose that limits its usefulness as a general purpose register. All the 80x86 registers have their own special purposes that limit their use in certain contexts. For the time being, you should simply avoid the use of the ESP and EBP registers for generic calculations and keep in mind that the remaining registers are not completely interchangeable in your programs.
 
-또 하나 알아두셔야 할 것이 있습니다. 범용 레지스터가 이름에 "범용"이 들어가지만 각 레지스터를 어떤 용도에든지 상관없이 사용할 수는 없다는 것입니다. SP/ESP레지스터를 예를 들면, 특정 용도 (스택을 가르키는 포인터)에만 사용될 수 있어서 다른 용도로는 사용하지 못하도록 막혀있습니다. 비슷하게 BP/EBP 레지스터도 정해진 용도가 있어서 범용적으로는 사용할 수 없습니다.
+또 하나 알아두셔야 할 것이 있습니다. 범용 레지스터가 이름에 "범용"이 들어가지만 각 레지스터를 어떤 용도에든지 상관없이 사용할 수는 없다는 것입니다. SP/ESP레지스터를 예를 들면, 특정 용도 (스택을 가르키는 포인터)에만 사용될 수 있어서 다른 용도로는 사용하지 못하도록 막혀있습니다. 비슷하게 BP/EBP 레지스터도 정해진 용도가 있어서 범용적으로는 사용할 수 없습니다. 모든 80x86 레지스터 마다 고유한 용도가 있어서 특정 문맥에만 사용하도록 설계되어있습니다. ESP와 EBP 레지스터는 일반적인 계산에 사용하시면 안되고 나머지 다른 레지스터들도 서로 용도가 다르기 때문에 혼용해서 사용할 수 없다는 것을 명심하시기 바랍니다.
+
+2.8  Some Basic Machine Instructions
+
+2.8 기본적인 기계 명령어 몇가지
+
+The 80x86 CPUs provide just over a hundred to many thousands of different machine instructions, depending on how you define a machine instruction. Even at the low end of the count (greater than 100), it appears as though there are far too many machine instructions to learn in a short period of time. Fortunately, you don't need to know all the machine instructions. In fact, most assembly language programs probably use around 30 different machine instructions3. Indeed, you can certainly write several meaningful programs with only a small handful of machine instructions. The purpose of this section is to provide a small handful of machine instructions so you can start writing simple HLA assembly language programs right away.
+
+80x86 CPU는 수백에서 수천가지 기계 명령어를 가지고 있습니다. 최하로 잡아도 (백개는 넘겠지요) 짧은 시간내에 배우기에는 너무 많은 기계 명령어가 있어 보입니다. 다행히 모든 기계 명령어를 알아야할 필요가 없습니다. 사실 대부분의 어셈블리 언어 프로그램이 30개 내외의 명령어만을 사용하고 있습니다. 사실은 몇가지 자주 사용되는 기계 명령어만 가지고도 여러가지 유용한 프로그램을 만드실 수 있습니다. 이 섹션에서 그 자주 사용되는 몇가지의 기계 명령어를 소개하고 있으니 간단한 HLA 어셈블리 프로그램을 바로 작성하실 수 있습니다.
+
+
+Without question, the MOV instruction is the most often-used assembly language statement. In a typical program, anywhere from 25-40% of the instructions are typically MOV instructions. As its name suggests, this instruction moves data from one location to another4. The HLA syntax for this instruction is
+
+
+
+mov( source_operand, destination_operand );
+
+The source_operand can be a register, a memory variable, or a constant. The destination_operand may be a register or a memory variable. Technically the 80x86 instruction set does not allow both operands to be memory variables; HLA, however, will automatically translate a MOV instruction with two 16- or 32-bit memory operands into a pair of instructions that will copy the data from one location to another. In a high level language like Pascal or C/C++, the MOV instruction is roughly equivalent to the following assignment statement:
+
+destination_operand = source_operand ;
+
+Perhaps the major restriction on the MOV instruction's operands is that they must both be the same size. That is, you can move data between two eight-bit objects, between two 16-bit objects, or between two 32-bit objects; you may not, however, mix the sizes of the operands. The following table lists all the legal combinations:
+
+Table 1: Legal 80x86 MOV Instruction Operands
 
 
 
