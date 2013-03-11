@@ -629,6 +629,168 @@ Perhaps the major restriction on the MOV instruction's operands is that they mus
 MOV 명령어의 오퍼랜드에는 두개가 서로 같은 크기여야한다는 큰 제약사항이 있습니다. 다시 말하면 두개의 8비트 객체간의 데이터를 옮기거나 16비트 객체간에 혹은 32비트 객체간에 데이터를 옮길 수는 있지만 다른 크기의 오퍼랜드를 사용할 수는 없다는 것입니다. 다음 테이블에서 올바른 조합의 리스트를 볼 수 있습니다.
 
 Table 1: Legal 80x86 MOV Instruction Operands
+테이블 1: 올바른 80x86 MOV 명령어의 오퍼랜드 사용법
+
+You should study this table carefully. Most of the general purpose 80x86 instructions use this same syntax. Note that in addition to the forms above, the HLA MOV instruction lets you specify two memory operands as the source and destination. However, this special translation that HLA provides only applies to the MOV instruction; it does not generalize to the other instructions.
+
+이 테이블을 주의깊게 익히셔야 합니다. 일반적인 80x86 명령어의 대부분이 같은 문법을 사용하고 있습니다. 위의 형태들 외에 HLA의 MOV 명령어에서는 2개의 오퍼랜드 모두를 메모리 오퍼랜드로 지정할 수 있도록 지원합니다. 하지만 이렇게 변환해주는 것은 MOV 명령어 뿐입니다. 다른 명령어들도 이렇다고 생각하시면 안됩니다.
+
+The 80x86 ADD and SUB instructions let you add and subtract two operands. Their syntax is nearly identical to the MOV instruction:
+
+80x86의 ADD와 SUB 명령어는 두개의 오퍼랜드를 더하고 빼는 일을 합니다. MOV 명령어와 문법이 유사합니다.
+
+add( source_operand, destination_operand );
+
+sub( source_operand, destination_operand );
+
+The ADD and SUB operands must take the same form as the MOV instruction, listed in the table above5. The ADD instruction does the following:
+
+destination_operand = destination_operand + source_operand ;
+
+destination_operand += source_operand; // For those who prefer C syntax
+
+Similarly, the SUB instruction does the calculation:
+
+destination_operand = destination_operand - source_operand ;
+
+destination_operand -= source_operand ; // For C fans.
+
+With nothing more than these three instructions, plus the HLA control structures that the next section discusses, you can actually write some sophisticated programs. Here's a sample HLA program that demonstrates these three instructions:
+
+
+ 
+program DemoMOVaddSUB;
+ 
+
+ 
+#include( "stdlib.hhf" );
+ 
+
+ 
+static
+ 
+    i8:     int8    := -8;
+ 
+    i16:    int16   := -16;
+ 
+    i32:    int32   := -32;
+ 
+
+ 
+begin DemoMOVaddSUB;
+ 
+
+ 
+    // First, print the initial values
+ 
+    // of our variables.
+ 
+
+ 
+    stdout.put
+ 
+    (
+ 
+        nl,
+ 
+        "Initialized values: i8=", i8, 
+ 
+        ", i16=", i16, 
+ 
+        ", i32=", i32, 
+ 
+        nl 
+ 
+    );
+ 
+
+ 
+    // Compute the absolute value of the
+ 
+    // three different variables and
+ 
+    // print the result.
+ 
+    // Note, since all the numbers are
+ 
+    // negative, we have to negate them.
+ 
+    // Using only the MOV, ADD, and SUB
+ 
+    // instruction, we can negate a value
+ 
+    // by subtracting it from zero.
+ 
+
+ 
+    mov( 0, al );   // Compute i8 := -i8;
+ 
+    sub( i8, al );
+ 
+    mov( al, i8 );
+ 
+    
+ 
+    mov( 0, ax );   // Compute i16 := -i16;
+ 
+    sub( i16, ax );
+ 
+    mov( ax, i16 );
+ 
+    
+ 
+    mov( 0, eax );  // Compute i32 := -i32;
+ 
+    sub( i32, eax );
+ 
+    mov( eax, i32 );
+ 
+
+ 
+    // Display the absolute values:
+ 
+
+ 
+    stdout.put
+ 
+    ( 
+ 
+        nl,
+ 
+        "After negation: i8=", i8, 
+ 
+        ", i16=", i16, 
+ 
+        ", i32=", i32, 
+ 
+        nl 
+ 
+    );
+ 
+
+ 
+    // Demonstrate ADD and constant-to-memory
+ 
+    // operations:
+ 
+
+ 
+    add( 32323200, i32 );
+ 
+    stdout.put( nl, "After ADD: i32=", i32, nl );
+ 
+
+ 
+
+ 
+    
+ 
+end DemoMOVaddSUB;
+ 
+
+ 
+Program 2.3  Demonstration of MOV, ADD, and SUB Instructions
+ 
 
 
 
