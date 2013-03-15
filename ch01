@@ -645,11 +645,15 @@ sub( source_operand, destination_operand );
 
 The ADD and SUB operands must take the same form as the MOV instruction, listed in the table above5. The ADD instruction does the following:
 
+ADD와 SUB 명령의 오퍼랜드는 위에서 본 것과 같이 MOV 명령과 동일한 형태입니다.  ADD 명령은 다음과 같은 일을 합니다.
+
 destination_operand = destination_operand + source_operand ;
 
 destination_operand += source_operand; // For those who prefer C syntax
 
 Similarly, the SUB instruction does the calculation:
+
+
 
 destination_operand = destination_operand - source_operand ;
 
