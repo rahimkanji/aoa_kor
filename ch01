@@ -649,27 +649,25 @@ ADD와 SUB 명령의 오퍼랜드는 위에서 본 것과 같이 MOV 명령과 �
 
 destination_operand = destination_operand + source_operand ;
 
-destination_operand += source_operand; // For those who prefer C syntax
+destination_operand += source_operand; // For those who prefer C syntax C문법 좋아하시는 분들 좋아하시는 표현
 
 Similarly, the SUB instruction does the calculation:
 
+마찬가지로 SUB 명령어도 계산을 합니다.
 
 
 destination_operand = destination_operand - source_operand ;
 
-destination_operand -= source_operand ; // For C fans.
+destination_operand -= source_operand ; // For C fans. C 언어 팬분들
 
 With nothing more than these three instructions, plus the HLA control structures that the next section discusses, you can actually write some sophisticated programs. Here's a sample HLA program that demonstrates these three instructions:
 
-
+딱 여기서 설명한 3개의 명령어와 바로 다음 섹션에서 설명할 제어 구조를 이용하면 뭔가 의미있는 프로그램을 작성할 수도 있습니다. 여기 위의 3개 명령어를 사용해서 만든 샘플 프로그램이 있습니다.
  
 program DemoMOVaddSUB;
  
 
- 
 #include( "stdlib.hhf" );
- 
-
  
 static
  
@@ -724,7 +722,10 @@ begin DemoMOVaddSUB;
     // instruction, we can negate a value
  
     // by subtracting it from zero.
- 
+3개의 변수들의 절대값을 계산한다음 결과를 출력합니다.
+모든 숫자들이 음수이므로 다시 부정 연산을 합니다.
+MOV, ADD, SUB 명령만 가지고, 0에서 원하는 값을 빼는
+방식으로 부정 연산을 할 수 있습니다.
 
  
     mov( 0, al );   // Compute i8 := -i8;
@@ -752,7 +753,7 @@ begin DemoMOVaddSUB;
 
  
     // Display the absolute values:
- 
+ 절대 값을 출력함
 
  
     stdout.put
@@ -774,7 +775,7 @@ begin DemoMOVaddSUB;
 
  
     // Demonstrate ADD and constant-to-memory
- 
+ ADD 명령과 상수-메모리 연산:
     // operations:
  
 
@@ -795,7 +796,7 @@ end DemoMOVaddSUB;
  
 Program 2.3  Demonstration of MOV, ADD, and SUB Instructions
  
-
+프로그램 2.3 MOV, ADD, SUB 명령어의 사용법
 
 
 
