@@ -824,32 +824,41 @@ Another important fact to mention is that HLA's high level control structures ar
 
 Several HLA statements require a boolean (true or false) expression to control their execution. Examples include the IF, WHILE, and REPEAT..UNTIL statements. The syntax for these boolean expressions represents the greatest limitation of the HLA high level control structures. This is one area where your familiarity with a high level language will work against you - you'll want to use the same boolean expressions you use in a high level language and HLA only supports some basic forms.
 
-
+HLA의 몇몇 문장은 프로그램의 실행을 제어하기 위해 부울(참이거나 거짓인) 표현식을 필요로 합니다.  IF, WHILE, REPEAT..UNTIL 문장들을 예로 들 수 있습니다. 이 부울 표현식의 문법이 HLA 고급 제어문에서 가장 많은 한계를 가진 것입니다. 바로 여기에서 고급 언어에 익숙한 여러분이 혼란을 느끼실수 있는 부분입니다. 고급 언어에서 사용하던대로 부울 표현식을 사용하고 싶으시겠지만 HLA는 아주 기본적인 형태 몇가지만을 지원하기 때문입니다.
 
 HLA boolean expressions always take the following forms6:
 
+HLA의 부울 표현식은 항상 다음과 같은 형태만을 가집니다.
+
 flag_specification
+플래그 상태
 
 !flag_specification
 
 register
+레지스터
 
 !register
 
 Boolean_variable
+부울변수값
 
 !Boolean_variable
 
 mem_reg relop mem_reg_const
+
 
 register in LowConst..HiConst
 
 register not in LowConst..HiConst
 
 A flag_specification may be one of the following symbols:
+플래그 상태는 다음과 같은 심볼들 중에 하나입니다.
 
 @c	 carry:	 True if the carry is set (1), false if the carry is clear (0).
+캐리가 발생(1)했으면 참, 아니면(0) 거짓
 @nc	 no carry:	 True if the carry is clear (0), false if the carry is set (1).
+
 @z	 zero:	 True if the zero flag is set, false if it is clear.
 @nz	 not zero:	 True if the zero flag is clear, false if it is set.
 @o	 overflow:	 True if the overflow flag is set, false if it is clear.
