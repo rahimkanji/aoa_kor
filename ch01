@@ -799,7 +799,67 @@ Program 2.3  Demonstration of MOV, ADD, and SUB Instructions
 프로그램 2.3 MOV, ADD, SUB 명령어의 사용법
 
 
+2.9  Some Basic HLA Control Structures
 
+2.9 제어문의 기본 (흐름제어나 제어 구조 등으로 번역할 수도 있지만 말이 어색해서 그냥 제어문으로 번역함)
+
+
+The MOV, ADD, and SUB instructions, while valuable, aren't sufficient to let you write meaningful programs. You will need to complement these instructions with the ability to make decisions and create loops in your HLA programs before you can write anything other than a trivial program. HLA provides several high level control structures that are very similar to control structures found in high level languages. These include IF..THEN..ELSEIF..ELSE..ENDIF, WHILE..ENDWHILE, REPEAT..UNTIL, and so on. By learning these statements you will be armed and ready to write some real programs.
+
+MOV, ADD, SUB 명령들만으로는 유용한 프로그램을 만들 수는 없습니다. 그 외에 뭔가 결정을 하거나 반복할 수 있는 기능들이 추가되어야 의미있는 프로그램을 만들 수 있습니다. HLA에는 고급 언어들이 가진 제어문과 비슷한 고수준의 레저문을 몇가지 제공합니다. 그것들은 IF..THEN..ELSEIF..ELSE..ENDIF와 WHILE..ENDWHILE, REPEAT..UNTIL 등입니다. 이 제어문을 익히고 나면 진정한(단지 예제로서만 의미있는게 아니라 뭔가 역할을 하는) 프로그램을 작성할 수 있게될 것입니다.
+
+
+Before discussing these high level control structures, it's important to point out that these are not real 80x86 assembly language statements. HLA compiles these statements into a sequence of one or more real assembly language statements for you. Later in this text, you'll learn how HLA compiles the statements and you'll learn how to write pure assembly language code that doesn't use them. However, you'll need to learn many new concepts before you get to that point, so we'll stick with these high level language statements for now since you're probably already familiar with statements like these from your exposure to high level languages.
+
+이런 고급 제어문을 이야기하기전에 그것들이 실제 80x86의 어셈블리 명령어가 아니라는 것을 짚고 넘어가야합니다. HLA 컴파일러가 여러분 대신에 이 문장들을 하나 이상의 실제 어셈블리 명령으로 컴파일해주는 것입니다. 이 책의 뒷부분에 가면 여러분은 HLA이 제어문을 어떻게 컴파일하는지와 고급 제어문을 사용하지 않고 순전히 어셈블리만으로 프로그래밍하는 것을 배울 것입니다. 하지만 거기까지 가기 전에 배워야 할 새로운 개념들이 많습니다. 여러분이 고급 언어를 사용하면서 이미 고급 제어문에 익숙해져있으므로 일단 HLA의 고급 제어문을 사용하도록 하겠습니다.
+
+Another important fact to mention is that HLA's high level control structures are not as high level as they first appear. The purpose behind HLA's high level control structures is to let you start writing assembly language programs as quickly as possible, not to let you avoid the use of real assembly language altogether. You will soon discover that these statements have some severe restrictions associated with them and you will quickly outgrow their capabilities (at least the restricted forms appearing in this section). This is intentional. Once you reach a certain level of comfort with HLA's high level control structures and decide you need more power than they have to offer, it's time to move on and learn the real 80x86 instructions behind these statements.
+
+또 하나 꼭 말씀드리고 넘어가야 할 것이 있는데 HLA의 고수준 제어문들이 보이는것 같이 수준이 높은 것은 아니라는 것입니다. HLA의 고급 제어문의 목적은 여러분이 어셈블리 프로그래밍을 빨리 시작할 수 있도록 돕는 것이지 진짜 어셈블리 언어를 사용할 필요가 없도록 만드는 것이 아닙니다. 여러분은 곧 이런 제어문들이 각각 심각한 제약이 있다는 것을 발견하실 것이고 그 한계(최소한 현재 섹션에서 나타나는 한계이상의)를 극복하실 수 있으실 것입니다. 일단 여러분께서 HLA의 고급 제어문을 능숙하게 사용하실 정도의 수준이 되시고나면 그것들의 기능보다 더 강력한 기능들이 필요해지실 것이고, 그렇게 되면 그 제어문속에 숨겨진 진짜 80x86 명령어들을 배우실 때가 되는 것입니다.
+
+
+2.9.1	 Boolean Expressions in HLA Statements
+
+Several HLA statements require a boolean (true or false) expression to control their execution. Examples include the IF, WHILE, and REPEAT..UNTIL statements. The syntax for these boolean expressions represents the greatest limitation of the HLA high level control structures. This is one area where your familiarity with a high level language will work against you - you'll want to use the same boolean expressions you use in a high level language and HLA only supports some basic forms.
+
+HLA boolean expressions always take the following forms6:
+
+flag_specification
+
+!flag_specification
+
+register
+
+!register
+
+Boolean_variable
+
+!Boolean_variable
+
+mem_reg relop mem_reg_const
+
+register in LowConst..HiConst
+
+register not in LowConst..HiConst
+
+A flag_specification may be one of the following symbols:
+
+@c	 carry:	 True if the carry is set (1), false if the carry is clear (0).
+@nc	 no carry:	 True if the carry is clear (0), false if the carry is set (1).
+@z	 zero:	 True if the zero flag is set, false if it is clear.
+@nz	 not zero:	 True if the zero flag is clear, false if it is set.
+@o	 overflow:	 True if the overflow flag is set, false if it is clear.
+@no	 no overflow:	 True if the overflow flag is clear, false if it is set.
+@s	 sign:	 True if the sign flag is set, false if it is clear.
+@ns	 no sign:	 True if the sign flag is clear, false if it is set.
+
+The use of the flag values in a boolean expression is somewhat advanced. You will begin to see how to use these boolean expression operands in the next chapter.
+
+A register operand can be any of the 8-bit, 16-bit, or 32-bit general purpose registers. The expression evaluates false if the register contains a zero; it evaluates true if the register contains a non-zero value.
+
+If you specify a boolean variable as the expression, the program tests it for zero (false) or non-zero (true). Since HLA uses the values zero and one to represent false and true, respectively, the test works in an intuitive fashion. Note that HLA requires that stand-alone variables be of type boolean. HLA rejects other data types. If you want to test some other type against zero/not zero, then use the general boolean expression discussed next.
+
+The most general form of an HLA boolean expression has two operands and a relational operator. The following table lists the legal combinations:
 
 
 
