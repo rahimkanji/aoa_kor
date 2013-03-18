@@ -856,25 +856,43 @@ A flag_specification may be one of the following symbols:
 플래그 상태는 다음과 같은 심볼들 중에 하나입니다.
 
 @c	 carry:	 True if the carry is set (1), false if the carry is clear (0).
-캐리가 발생(1)했으면 참, 아니면(0) 거짓
+@c 캐리: 캐리가 발생(1)했으면 참, 아니면(0) 거짓
 @nc	 no carry:	 True if the carry is clear (0), false if the carry is set (1).
+@nc 캐리 없음: 캐리가 비었으면 (0) 참, 캐리가 발생했으면 (1) 거짓
 
 @z	 zero:	 True if the zero flag is set, false if it is clear.
+@z 제로: 제로 플래그가 설정되었으면 참, 비었으면 거짓
+
 @nz	 not zero:	 True if the zero flag is clear, false if it is set.
+@nz 제로 아님: 제로 플래그가 비었으면 참, 설정되었으면 거짓
+
 @o	 overflow:	 True if the overflow flag is set, false if it is clear.
+@o 오버플로우: 오버플로우 플래그가 설정되면 참, 비었으면 거짓
+
 @no	 no overflow:	 True if the overflow flag is clear, false if it is set.
+@o 오버플로우 없음: 오버플로우 플래그가 비었으면 참, 설정되면 거짓
+
 @s	 sign:	 True if the sign flag is set, false if it is clear.
+@s 부호: 부호 플래그가 설정되면 참, 비었으면 거짓
+
 @ns	 no sign:	 True if the sign flag is clear, false if it is set.
+@ns 부호 없음: 부호 플래그가 비었으면 참, 설정되면 거짓
 
 The use of the flag values in a boolean expression is somewhat advanced. You will begin to see how to use these boolean expression operands in the next chapter.
 
+부울 표현식에서 플래그의 값을 사용한다는 것은 조금은 대단한 것입니다. 다음 장에서는 오퍼랜드에 부울 표현식을 사용하는 방법을 볼 수 있을 것입니다.
+
 A register operand can be any of the 8-bit, 16-bit, or 32-bit general purpose registers. The expression evaluates false if the register contains a zero; it evaluates true if the register contains a non-zero value.
+
+레지스터 오퍼랜드에는 8비트, 16비트, 32비트 범용 레지스터가 올 수 있습니다. 레지스터 값이 0이면 표현식은 거짓으로 평가되고 레지스터 값이 0이 아니면 참으로 평가됩니다.
 
 If you specify a boolean variable as the expression, the program tests it for zero (false) or non-zero (true). Since HLA uses the values zero and one to represent false and true, respectively, the test works in an intuitive fashion. Note that HLA requires that stand-alone variables be of type boolean. HLA rejects other data types. If you want to test some other type against zero/not zero, then use the general boolean expression discussed next.
 
+표현식에 부울 변수를 지정하면 프로그램이 0(거짓)인지 0이 아닌(참)지 테스트를 합니다. HLA에서 거짓을 표현할 때 0 값을 사용하고, 참을 1로 표현하므로 직관적으로 이해할 수 있습니다. HLA에서 부울 타입은 변수 하나만으로 구성됩니다. 다른 데이터 타입은 부울 타입으로 사용할 수 없습니다. 만약 다른 타입에 대해서 0인지 아닌지 테스트하길 원한다면 다음에 나올 일반 부울 표현식을 사용하시기 바랍니다.
+
 The most general form of an HLA boolean expression has two operands and a relational operator. The following table lists the legal combinations:
 
-
+HLA의 부울 표현식은 대부분 두개의 오퍼랜드와 비교 연산자로 이루어집니다. 다음 테이블에 옳바른 사용법의 리스트가 있습니다.
 
 
 
