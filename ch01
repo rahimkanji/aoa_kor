@@ -820,7 +820,11 @@ Another important fact to mention is that HLA's high level control structures ar
 
 2.9.1	 Boolean Expressions in HLA Statements
 
+2.9.1 HLA에서의 부울 표현식
+
 Several HLA statements require a boolean (true or false) expression to control their execution. Examples include the IF, WHILE, and REPEAT..UNTIL statements. The syntax for these boolean expressions represents the greatest limitation of the HLA high level control structures. This is one area where your familiarity with a high level language will work against you - you'll want to use the same boolean expressions you use in a high level language and HLA only supports some basic forms.
+
+
 
 HLA boolean expressions always take the following forms6:
 
