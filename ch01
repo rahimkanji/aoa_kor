@@ -894,6 +894,48 @@ The most general form of an HLA boolean expression has two operands and a relati
 
 HLA의 부울 표현식은 대부분 두개의 오퍼랜드와 비교 연산자로 이루어집니다. 다음 테이블에 옳바른 사용법의 리스트가 있습니다.
 
+Table 2: Legal Boolean Expressions
+
+테이블2: 옳바른 부울 표현식
+
+Note that both operands cannot be memory operands. In fact, if you think of the Right Operand as the source operand and the Left Operand as the destination operand, then the two operands must be the same as those allowed for the ADD and SUB instructions.
+
+두개의 오퍼랜드가 동시에 메모리일 수 없습니다.
+
+Also like the ADD and SUB instructions, the two operands must be the same size. That is, they must both be eight-bit operands, they must both be 16-bit operands, or they must both be 32-bit operands. If the Right Operand is a constant, it's value must be in the range that is compatible with the Left Operand.
+
+There is one other issue of which you need to be aware. If the Left Operand is a register and the Right Operand is a positive constant or another register, HLA uses an unsigned comparison. The next chapter will discuss the ramifications of this; for the time being, do not compare negative values in a register against a constant or another register. You may not get an intuitive result.
+
+The IN and NOT IN operators let you test a register to see if it is within a specified range. For example, the expression "EAX in 2000..2099" evaluates true if the value in the EAX register is between 2000 and 2099 (inclusive). The NOT IN (two words) operator lets you check to see if the value in a register is outside the specified range. For example, "AL not in `a'..'z'" evaluates true if the character in the AL register is not a lower case alphabetic character.
+
+Here are some examples of legal boolean expressions in HLA:
+
+@c
+
+Bool_var
+
+al
+
+ESI
+
+EAX < EBX
+
+EBX > 5
+
+i32 < -2
+
+i8 > 128
+
+al < i8
+
+eax in 1..100
+
+ch not in `a'..'z'
+
+2.9.2 The HLA IF..THEN..ELSEIF..ELSE..ENDIF Statement
+
+The HLA IF statement uses the following syntax: 
+
 
 
 
