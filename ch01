@@ -900,15 +900,23 @@ Table 2: Legal Boolean Expressions
 
 Note that both operands cannot be memory operands. In fact, if you think of the Right Operand as the source operand and the Left Operand as the destination operand, then the two operands must be the same as those allowed for the ADD and SUB instructions.
 
-두개의 오퍼랜드가 동시에 메모리일 수 없습니다.
+두개의 오퍼랜드가 동시에 메모리일 수 없습니다. 오른쪽 오퍼랜드를 소스 오퍼랜드라고 보고 왼쪽 오퍼랜드는 목적 오퍼랜드라고 생각해보시면 ADD나 SUB 명령에서의 오퍼랜드 사용법과 동일함을 아실 수 있습니다.
 
 Also like the ADD and SUB instructions, the two operands must be the same size. That is, they must both be eight-bit operands, they must both be 16-bit operands, or they must both be 32-bit operands. If the Right Operand is a constant, it's value must be in the range that is compatible with the Left Operand.
 
+또 ADD나 SUB 명령과 유사한 점이 있는데 두개의 오퍼랜드의 크기가 동일해야한다는 것입니다. 즉 두개 모두 8비트 오퍼랜드이던가, 모두 16비트 혹은 모두 32비트 오퍼랜드가 되야합니다. 오른쪽 오퍼랜드가 상수이면 왼쪽 오퍼랜드에 저장 가능한 범위내의 값이어야 합니다.
+
+
 There is one other issue of which you need to be aware. If the Left Operand is a register and the Right Operand is a positive constant or another register, HLA uses an unsigned comparison. The next chapter will discuss the ramifications of this; for the time being, do not compare negative values in a register against a constant or another register. You may not get an intuitive result.
+
+알아두셔야 할 것이 하나 더 있습니다. 왼쪽 오퍼랜드가 레지스터이고 오른쪽 오퍼랜드가 양의 상수이거나 레지스터일 때 HLA는 부호없는 비교를 수행합니다. 다음 장에서 자세히 알아볼 것이니까 그때까지는 음수가 저장된 레지스터와 상수나 다른 레지스터를 비교하지 마시기 바랍니다. 아마도 전혀 생각하지 못하셨던 결과를 얻으시게 될 것입니다.
 
 The IN and NOT IN operators let you test a register to see if it is within a specified range. For example, the expression "EAX in 2000..2099" evaluates true if the value in the EAX register is between 2000 and 2099 (inclusive). The NOT IN (two words) operator lets you check to see if the value in a register is outside the specified range. For example, "AL not in `a'..'z'" evaluates true if the character in the AL register is not a lower case alphabetic character.
 
+IN과 NOT IN 연산자는 레지스터의 값이 특정 범위 내에 있는지를 확인합니다. "EAX in 2000..2099"라는 표현식을 예로 들면 EAX 레지스터값이 2000이상 2099이하일 때 참이 됩니다. NOT IN 연산자는 특정 범위 밖에 있는지를 확인합니다. "AL not in 'a'..'z'" 표현은 AL 레지스터가 소문자 알파벳 문자가 아닐 때 참이 됩니다.
+
 Here are some examples of legal boolean expressions in HLA:
+다음은 HLA에서 사용할 수 있는 부울 표현식의 예제입니다.
 
 @c
 
@@ -934,8 +942,10 @@ ch not in `a'..'z'
 
 2.9.2 The HLA IF..THEN..ELSEIF..ELSE..ENDIF Statement
 
-The HLA IF statement uses the following syntax: 
+2.9.2 IF..THEN..ELSEIF..ELSE..ENDIF 문장
 
+The HLA IF statement uses the following syntax: 
+다음은 IF 문장을 문법입니다.
 
 
 
